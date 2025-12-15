@@ -1,18 +1,14 @@
-import Link from 'next/link';
-import {
-  footer_name,
-  footer_tagline,
-  footer_description,
-  footer_quick_links,
-  footer_sections_links,
-  footer_social_links,
-  footer_contact_info,
-  footer_copyright,
-  footer_built_with,
-} from '@/constant/footer-constant';
-import { typography_types } from '@/constant/typography-constant';
+import { FOOTER } from '@/constant/footer-constant';
 import { Icon } from '@/icons';
 import './footer.scss';
+
+const ICONS = {
+  github: <Icon name="github" size={20} />,
+  linkedin: <Icon name="linkedin" size={20} />,
+  facebook: <Icon name="facebook" size={20} />,
+  instagram: <Icon name="instagram" size={20} />,
+  twitter: <Icon name="twitter" size={20} />,
+};
 
 export default function Footer() {
   return (
@@ -22,65 +18,39 @@ export default function Footer() {
         <div className="footer-top">
           {/* About Column */}
           <div className="footer-column footer-about">
-            <h3 className={`${typography_types.heading_3_bold} footer-heading`}>
-              {footer_name}
-            </h3>
-            <p className={`${typography_types.caption_1_bold} footer-tagline`}>
-              {footer_tagline}
-            </p>
-            <p className={`${typography_types.body_3_bold} footer-description`}>
-              {footer_description}
-            </p>
+            <h3 className="footer-heading">{FOOTER.brand.name}</h3>
+            <p className="footer-tagline">{FOOTER.brand.tagline}</p>
+            <p className="footer-description">{FOOTER.description}</p>
           </div>
 
-          {/* Quick Links Column */}
-          <div className="footer-column">
-            <h4 className={`${typography_types.heading_4_bold} footer-column-title`}>
-              Quick Links
-            </h4>
-            <ul className="footer-links">
-              {footer_quick_links.map((link, index) => (
-                <li key={index}>
-                  <Link href={link.href} className={`${typography_types.body_3_bold} footer-link`}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Sections Column */}
-          <div className="footer-column">
-            <h4 className={`${typography_types.heading_4_bold} footer-column-title`}>
-              Sections
-            </h4>
-            <ul className="footer-links">
-              {footer_sections_links.map((link, index) => (
-                <li key={index}>
-                  <a href={link.href} className={`${typography_types.body_3_bold} footer-link`}>
+          {/* Sections - Using flex-row on mobile, flex-col on desktop */}
+          {FOOTER.sections.map((section) => (
+            <div key={section.title} className="footer-column">
+              <h4 className="footer-column-title">{section.title}</h4>
+              <nav className="footer-links flex flex-row md:flex-col gap-2">
+                {section.links.map((link) => (
+                  <a key={link.href} href={link.href} className="footer-link hover:opacity-100 opacity-80">
                     {link.label}
                   </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+                ))}
+              </nav>
+            </div>
+          ))}
 
           {/* Contact Column */}
           <div className="footer-column">
-            <h4 className={`${typography_types.heading_4_bold} footer-column-title`}>
-              Contact
-            </h4>
+            <h4 className="footer-column-title">Contact</h4>
             <div className="footer-contact">
               <a
-                href={`mailto:${footer_contact_info.email}`}
-                className={`${typography_types.body_3_bold} footer-contact-item`}
+                href={`mailto:${FOOTER.contact.email}`}
+                className="footer-contact-item"
               >
                 <Icon name="mail" size={18} />
-                <span>{footer_contact_info.email}</span>
+                <span>{FOOTER.contact.email}</span>
               </a>
-              <div className={`${typography_types.body_3_bold} footer-contact-item`}>
+              <div className="footer-contact-item">
                 <Icon name="mapPin" size={18} />
-                <span>{footer_contact_info.location}</span>
+                <span>{FOOTER.contact.location}</span>
               </div>
             </div>
           </div>
@@ -92,26 +62,24 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="footer-bottom">
           <div className="footer-bottom-left">
-            <p className={`${typography_types.caption_2_bold} footer-copyright`}>
-              {footer_copyright}
-            </p>
-            <p className={`${typography_types.caption_2_bold} footer-built`}>
-              {footer_built_with} <Icon name="heart" size={14} className="footer-heart" />
+            <p className="footer-copyright">{FOOTER.copyright}</p>
+            <p className="footer-built">
+              {FOOTER.builtWith} <Icon name="heart" size={14} className="footer-heart" />
             </p>
           </div>
 
           {/* Social Links */}
           <div className="footer-social">
-            {footer_social_links.map((social, index) => (
+            {FOOTER.socials.map((social) => (
               <a
-                key={index}
+                key={social.key}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
                 className="footer-social-link"
               >
-                <Icon name={social.icon} size={20} />
+                {ICONS[social.key]}
               </a>
             ))}
           </div>

@@ -1,6 +1,6 @@
 // Centralized icons for easy reuse; pass `size` as prop
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaFacebook } from "react-icons/fa";
-import { FiMail, FiArrowRight, FiDownload, FiMapPin, FiHeart } from "react-icons/fi";
+import { FiMail, FiArrowRight, FiDownload, FiMapPin, FiHeart, FiMenu, FiX } from "react-icons/fi";
 
 // Icon mapping object
 const ICONS = {
@@ -16,6 +16,8 @@ const ICONS = {
   heart: FiHeart,
   arrowRight: FiArrowRight,
   download: FiDownload,
+  menu: FiMenu,
+  x: FiX,
 };
 // Generic Icon component
 export function Icon({ name, size = 18, color, className, ...props }) {

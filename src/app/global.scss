@@ -67,6 +67,7 @@ $breakpoints: (
   --fs-3xl: 24px;
   --fs-4xl: 28px;
   --fs-5xl: 32px;
+  --fs-6xl: 48px;
   --margin-xs: 4px;
   --margin-sm: 8px;
   --margin-md: 12px;
@@ -89,6 +90,29 @@ $breakpoints: (
   --padding-5xl: 48px;
   --padding-6xl: 56px;
   --padding-7xl: 64px;
+  --fs-xs: 12px;
+  --c-primary: #0ea5e9;
+  --c-success: #10b981;
+  --c-danger: #ef4444;
+  --c-info: #3b82f6;
+  --badge-bg: color-mix(in srgb, var(--foreground) 8%, transparent);
+  --badge-fg: var(--foreground);
+  --badge-border: var(--border);
+  --badge-primary-bg: color-mix(in srgb, var(--c-primary) 18%, transparent);
+  --badge-primary-fg: var(--c-primary);
+  --badge-primary-border: color-mix(in srgb, var(--c-primary) 28%, var(--border));
+  --badge-success-bg: color-mix(in srgb, var(--c-success) 18%, transparent);
+  --badge-success-fg: var(--c-success);
+  --badge-success-border: color-mix(in srgb, var(--c-success) 28%, var(--border));
+  --badge-warning-bg: #92400e;
+  --badge-warning-fg: #ffffff;
+  --badge-warning-border: #92400e;
+  --badge-danger-bg: color-mix(in srgb, var(--c-danger) 18%, transparent);
+  --badge-danger-fg: var(--c-danger);
+  --badge-danger-border: color-mix(in srgb, var(--c-danger) 28%, var(--border));
+  --badge-info-bg: color-mix(in srgb, var(--c-info) 18%, transparent);
+  --badge-info-fg: var(--c-info);
+  --badge-info-border: color-mix(in srgb, var(--c-info) 28%, var(--border));
 }
 //some mixin like padding, margin, font-size, font-weight, etc.
 
@@ -334,4 +358,231 @@ $breakpoints: (
   @include font-size(xs);
   @include font-weight(bold);
   line-height: 1.4;
+}
+
+/* Badge styles using tokens */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: var(--radius);
+  font-size: var(--fs-xs);
+  border: 1px solid transparent;
+}
+
+.badge--neutral {
+  background: var(--badge-bg);
+  color: var(--badge-fg, var(--foreground));
+  border-color: var(--badge-border, var(--border));
+}
+
+.badge--primary {
+  background: var(--badge-primary-bg);
+  color: var(--badge-primary-fg, var(--c-primary));
+  border-color: var(--badge-primary-border, #bae6fd);
+}
+
+.badge--success {
+  background: var(--badge-success-bg);
+  color: var(--badge-success-fg, var(--c-success));
+  border-color: var(--badge-success-border, #bbf7d0);
+}
+
+.badge--warning {
+  background: var(--badge-warning-bg);
+  color: var(--badge-warning-fg, #ffffff);
+  border-color: var(--badge-warning-border, var(--badge-warning-bg));
+}
+
+.badge--danger {
+  background: var(--badge-danger-bg);
+  color: var(--badge-danger-fg, #991b1b);
+  border-color: var(--badge-danger-border, #fecaca);
+}
+
+.badge--info {
+  background: var(--badge-info-bg);
+  color: var(--badge-info-fg, var(--c-info));
+  border-color: var(--badge-info-border, #bfdbfe);
+}
+
+/* Utility classes for footer */
+.container-app {
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1400px;
+
+  @include bp(md) {
+    width: 94%;
+  }
+
+  @include bp(lg) {
+    width: 90%;
+  }
+}
+
+.border-t {
+  border-top-width: 1px;
+}
+
+.border-border {
+  border-color: var(--border);
+}
+
+.text-foreground {
+  color: var(--foreground);
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@include bp(md) {
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+.space-y-3 > * + * {
+  margin-top: 0.75rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.w-10 {
+  width: 2.5rem;
+}
+
+.h-10 {
+  height: 2.5rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
+.bg-muted {
+  background-color: var(--muted);
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.opacity-80 {
+  opacity: 0.8;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+@include bp(md) {
+  .md\:flex-col {
+    flex-direction: column;
+  }
+}
+
+.hover\:opacity-100:hover {
+  opacity: 1;
+}
+
+.h-px {
+  height: 1px;
+}
+
+.bg-\[var\(--border\)\] {
+  background-color: var(--border);
+}
+
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+@include bp(sm) {
+  .sm\:flex {
+    display: flex;
+  }
+
+  .sm\:items-center {
+    align-items: center;
+  }
+
+  .sm\:justify-between {
+    justify-content: space-between;
+  }
+
+  .sm\:mt-0 {
+    margin-top: 0;
+  }
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
 }
