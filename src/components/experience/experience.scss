@@ -35,30 +35,37 @@
   display: flex;
   flex-direction: column;
   gap: var(--margin-lg);
-  max-width: 900px;
   margin: 0 auto;
-  @include padding(md);
 
-  @include bp(md) {
-    gap: var(--margin-xl);
-    @include padding(lg);
-  }
+  // Mobile: vertical connecting line
+  &::before {
+    content: '';
+    position: absolute;
+    left: 7px; // Center of mobile dot (14px / 2)
+    top: 14px; // Start after first dot
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--c-primary) 0%, var(--border) 100%);
+    z-index: 0;
 
-  @include bp(lg) {
-    max-width: 1000px;
+    @include bp(md) {
+      display: none; // Hide on desktop
+    }
   }
 }
 
 .timeline-item {
   position: relative;
-  display: grid;
-  grid-template-columns: auto auto 1fr;
-  gap: var(--margin-md);
+  display: flex;
+  flex-direction: column;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 
+  // Mobile: vertical layout (dot + duration above card)
   @include bp(md) {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
     gap: var(--margin-lg);
   }
 
@@ -72,21 +79,34 @@
   }
 }
 
-// Year label
-.timeline-year {
+// Mobile header (dot + duration)
+.timeline-mobile-header {
   display: flex;
-  align-items: flex-start;
-  padding-top: 6px;
+  align-items: center;
+  gap: var(--margin-sm);
+  margin-bottom: var(--margin-md);
+  position: relative;
 
   @include bp(md) {
+    display: none; // Hide on desktop
+  }
+}
+
+// Year label
+.timeline-year {
+  display: none; // Hide on mobile
+
+  @include bp(md) {
+    display: flex;
+    align-items: flex-start;
     padding-top: 8px;
   }
 
   .year-text {
-    color: #3b82f6;
-    line-height: 1.3;
     font-size: var(--fs-sm);
     font-weight: var(--font-weight-semibold);
+    color: var(--c-primary);
+    line-height: 1.3;
     white-space: nowrap;
 
     @include bp(md) {
@@ -103,23 +123,42 @@
 // Timeline line and dot
 .timeline-line-wrapper {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 6px;
+  display: none; // Hide on mobile
 
   @include bp(md) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding-top: 8px;
   }
 }
 
+// Mobile dot (in header)
+.timeline-dot-mobile {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--c-primary);
+  border: 2px solid var(--background);
+  box-shadow: 0 0 0 2px var(--c-primary);
+  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1; // Above the connecting line
+
+  .timeline-item.visible & {
+    animation: dotPulse 0.6s ease-out;
+  }
+}
+
+// Desktop dot (in line wrapper)
 .timeline-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #3b82f6;
+  background: var(--c-primary);
   border: 2px solid var(--background);
-  box-shadow: 0 0 0 2px #3b82f6;
+  box-shadow: 0 0 0 2px var(--c-primary);
   z-index: 2;
   flex-shrink: 0;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -146,10 +185,19 @@
   }
 }
 
+// Mobile duration text
+.timeline-duration-mobile {
+  font-size: var(--fs-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--c-primary);
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
 .timeline-line {
   width: 2px;
   flex: 1;
-  background: linear-gradient(to bottom, #3b82f6 0%, var(--border) 100%);
+  background: linear-gradient(to bottom, var(--c-primary) 0%, var(--border) 100%);
   margin-top: 6px;
   min-height: 40px;
 
@@ -170,10 +218,10 @@
 
 // Content card
 .timeline-content {
-  padding-bottom: var(--padding-sm);
+  width: 100%; // Full width on mobile
 
   @include bp(md) {
-    padding-bottom: var(--padding-md);
+    padding-bottom: var(--margin-md);
   }
 }
 
@@ -181,22 +229,21 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--smallRadius);
-  @include padding(sm);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 
   @include bp(sm) {
-    @include padding(md);
+    padding: var(--margin-md);
     border-radius: var(--mediumRadius);
   }
 
   @include bp(md) {
-    @include padding(lg);
+    padding: var(--margin-lg);
   }
 
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    border-color: #3b82f6;
+    border-color: var(--c-primary);
   }
 }
 
@@ -206,19 +253,19 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: var(--margin-sm);
-  margin-bottom: var(--margin-sm);
+  margin-bottom: 8px;
 
   @include bp(sm) {
-    margin-bottom: var(--margin-md);
+    margin-bottom: 12px;
   }
 }
 
 .company-name {
+  font-size: var(--fs-base);
+  font-weight: var(--font-weight-bold);
   color: var(--foreground);
   margin: 0;
   line-height: 1.3;
-  font-size: var(--fs-base);
-  font-weight: var(--font-weight-bold);
   flex: 1;
 
   @include bp(sm) {
@@ -236,28 +283,29 @@
 }
 
 .role-title {
-  color: var(--foreground);
-  margin: 0 0 var(--margin-sm) 0;
-  line-height: 1.4;
   font-size: var(--fs-sm);
   font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin: 0 0 8px 0;
+  line-height: 1.4;
 
   @include bp(sm) {
     font-size: var(--fs-base);
-    margin-bottom: var(--margin-md);
+    margin-bottom: 12px;
   }
 
   @include bp(md) {
     font-size: var(--fs-lg);
+    margin-bottom: 16px;
   }
 }
 
 .description {
+  font-size: var(--fs-xs);
   color: var(--foreground);
   opacity: 0.8;
   line-height: 1.6;
   margin: 0;
-  font-size: var(--fs-xs);
 
   @include bp(sm) {
     font-size: var(--fs-sm);
@@ -266,21 +314,38 @@
   @include bp(md) {
     font-size: var(--fs-base);
   }
+
+  @include bp(lg) {
+    font-size: var(--fs-lg);
+  }
+
+  .highlight-text {
+    font-weight: var(--font-weight-semibold);
+    color: var(--c-primary);
+    background: linear-gradient(120deg, rgba(14, 165, 233, 0.1) 0%, rgba(14, 165, 233, 0.05) 100%);
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: linear-gradient(120deg, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0.08) 100%);
+    }
+  }
 }
 
 // Animations
 @keyframes dotPulse {
   0% {
     transform: scale(0.8);
-    box-shadow: 0 0 0 0 #3b82f6;
+    box-shadow: 0 0 0 0 var(--c-primary);
   }
   50% {
     transform: scale(1.2);
-    box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 0 8px rgba(14, 165, 233, 0.2);
   }
   100% {
     transform: scale(1);
-    box-shadow: 0 0 0 2px #3b82f6;
+    box-shadow: 0 0 0 2px var(--c-primary);
   }
 }
 

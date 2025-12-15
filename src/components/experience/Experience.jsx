@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from 'react';
-import Button from '@/components/ui/Button';
+import Badge from '@/components/ui/Badge';
 import { experience_title, experience_description, list_of_experiences } from '@/constant/experience-constant';
-import { typography_types } from '@/constant/typography-constant';
+import { parseHighlightedText } from '@/utils/textParser';
 import './experience.scss';
 
 export default function Experience() {
@@ -11,8 +11,10 @@ export default function Experience() {
 
   useEffect(() => {
     const observers = [];
+
     itemRefs.current.forEach((ref, index) => {
       if (!ref) return;
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -38,10 +40,10 @@ export default function Experience() {
     <section id="experience" className="experience-section py-fluid">
       <div className="container-narrow">
         <div className="experience-header">
-          <h2 className={`${typography_types.heading_1_bold} experience-title`}>
+          <h2 className="experience-title">
             {experience_title}
           </h2>
-          <p className={`${typography_types.body_1_bold} experience-description`}>
+          <p className="experience-description">
             {experience_description}
           </p>
         </div>
@@ -52,35 +54,39 @@ export default function Experience() {
               ref={(el) => (itemRefs.current[index] = el)}
               className={`timeline-item ${visibleItems.has(index) ? 'visible' : ''}`}
             >
-              {/* Timeline line and dot */}
+              {/* Mobile: Dot + Duration Header */}
+              <div className="timeline-mobile-header">
+                <div className="timeline-dot-mobile" />
+                <span className="timeline-duration-mobile">{experience.duration}</span>
+              </div>
+
+              {/* Desktop: Timeline line and dot */}
               <div className="timeline-line-wrapper">
                 <div className="timeline-dot" />
                 {index < list_of_experiences.length - 1 && <div className="timeline-line" />}
               </div>
 
-              {/* Year label */}
+              {/* Desktop: Year label */}
               <div className="timeline-year">
-                <span className={`${typography_types.body_2_bold} year-text`}>
-                  {experience.duration}
-                </span>
+                <span className="year-text">{experience.duration}</span>
               </div>
 
               {/* Content card */}
               <div className="timeline-content">
-                <div className="experience-card">
+                <div className="experience-card py-fluid px-fluid">
                   <div className="card-header">
-                    <h3 className={`${typography_types.heading_3_bold} company-name`}>
-                      {experience.company}
-                    </h3>
-                    <Button variant="outline" size="sm" className="job-type-badge">
-                      {experience.type}
-                    </Button>
+                    <h3 className="company-name">{experience.company}</h3>
+                    <Badge variant="primary" className="job-type-badge">{experience.type}</Badge>
                   </div>
-                  <h4 className={`${typography_types.body_1_bold} role-title`}>
-                    {experience.role}
-                  </h4>
-                  <p className={`${typography_types.body_2_bold} description`}>
-                    {experience.description}
+                  <h4 className="role-title">{experience.role}</h4>
+                  <p className="description">
+                    {parseHighlightedText(experience.description).map((part, idx) => (
+                      part.highlighted ? (
+                        <span key={idx} className="highlight-text">{part.text}</span>
+                      ) : (
+                        <span key={idx}>{part.text}</span>
+                      )
+                    ))}
                   </p>
                 </div>
               </div>
