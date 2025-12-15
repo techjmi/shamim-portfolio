@@ -1,0 +1,337 @@
+@use "sass:map";
+@import "tailwindcss";
+//some global scss, mixin, css tokens, variables, etc. like breakpoints, padding, margin, font-size, font-weight, etc.
+
+//some global scss, mixin, css tokens, variables, etc. like breakpoints, padding, margin, font-size, font-weight, etc.
+//breakpoints like sm, md, lg, xl, xxl
+$breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  xxl: 1536px,
+);
+//some mixin like bp
+@mixin bp($size) {
+  @media (min-width: map.get($breakpoints, $size)) {
+    @content;
+  }
+}
+//some css token
+:root{
+  --background: #ffffff;
+  --foreground: #111827;
+  --surface: #ffffff;
+  --muted: #f3f4f6;
+  --border: #e5e7eb;
+  --radius: 9999px;
+  --mediumRadius: 12px;
+  --largeRadius: 18px;
+  --xlargeRadius: 24px;
+  --smallRadius: 6px;
+  --control-h: 32px;
+  --header-h: 72px;
+  --font-weight-extrabold: 800;
+  --font-weight-bold: 600;
+  --font-weight-semibold: 500;
+  --font-weight-medium: 400;
+  --font-weight-light: 300;
+  --font-weight-thin: 200;
+  --font-weight-extralight: 100;  
+  --font-size-xs: 10px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 28px;
+  --font-size-5xl: 32px;
+  --h1-fs: 24px;
+  --h1-lh: 1.2;
+  --h2-fs: 20px;
+  --h2-lh: 1.25;
+  --h3-fs: 18px;
+  --h3-lh: 1.3;
+  --h4-fs: 16px;
+  --h4-lh: 1.35;
+  --h5-fs: 14px;
+  --h5-lh: 1.4;
+  --h6-fs: 12px;
+  --h6-lh: 1.5;
+  --fs-sm: 12px;
+  --fs-base: 14px;
+  --fs-lg: 16px;
+  --fs-xl: 18px;
+  --fs-2xl: 20px;
+  --fs-3xl: 24px;
+  --fs-4xl: 28px;
+  --fs-5xl: 32px;
+  --margin-xs: 4px;
+  --margin-sm: 8px;
+  --margin-md: 12px;
+  --margin-lg: 16px;
+  --margin-xl: 20px;
+  --margin-2xl: 24px;
+  --margin-3xl: 32px;
+  --margin-4xl: 40px;
+  --margin-5xl: 48px;
+  --margin-6xl: 56px;
+  --margin-7xl: 64px;
+  --padding-xs: 4px;
+  --padding-sm: 8px;
+  --padding-md: 12px;
+  --padding-lg: 16px;
+  --padding-xl: 20px;
+  --padding-2xl: 24px;
+  --padding-3xl: 32px;
+  --padding-4xl: 40px;
+  --padding-5xl: 48px;
+  --padding-6xl: 56px;
+  --padding-7xl: 64px;
+}
+//some mixin like padding, margin, font-size, font-weight, etc.
+
+//padding mixin
+@mixin padding($size) {
+  padding: var(--padding-#{$size});
+}
+//margin mixin
+@mixin margin($size) {
+  margin: var(--margin-#{$size});
+}
+//font-size mixin
+@mixin font-size($size) {
+  font-size: var(--fs-#{$size});
+}
+//font-weight mixin
+@mixin font-weight($size) {
+  font-weight: var(--font-weight-#{$size});
+}
+//heading mixin
+@mixin heading($size) {
+  font-size: var(--h#{$size}-fs);
+  line-height: var(--h#{$size}-lh);
+}
+// Responsive padding-y (top and bottom)
+.py-fluid {
+  padding-top: var(--padding-md);
+  padding-bottom: var(--padding-md);
+
+  @include bp(md) {
+    padding-top: var(--padding-lg);
+    padding-bottom: var(--padding-lg);
+  }
+
+  @include bp(lg) {
+    padding-top: var(--padding-xl);
+    padding-bottom: var(--padding-xl);
+  }
+}
+
+// Responsive padding-x (left and right)
+.px-fluid {
+  padding-left: var(--padding-md);
+  padding-right: var(--padding-md);
+
+  @include bp(md) {
+    padding-left: var(--padding-lg);
+    padding-right: var(--padding-lg);
+  }
+
+  @include bp(lg) {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+  }
+}
+
+// Responsive margin-x (left and right)
+.mx-fluid {
+  margin-left: var(--margin-md);
+  margin-right: var(--margin-md);
+
+  @include bp(md) {
+    margin-left: var(--margin-lg);
+    margin-right: var(--margin-lg);
+  }
+
+  @include bp(lg) {
+    margin-left: var(--margin-xl);
+    margin-right: var(--margin-xl);
+  }
+}
+
+// Responsive margin-y (top and bottom)
+.my-fluid {
+  margin-top: var(--margin-md);
+  margin-bottom: var(--margin-md);
+
+  @include bp(md) {
+    margin-top: var(--margin-lg);
+    margin-bottom: var(--margin-lg);
+  }
+
+  @include bp(lg) {
+    margin-top: var(--margin-xl);
+    margin-bottom: var(--margin-xl);
+  }
+}
+
+// Responsive heading (gets bigger on larger screens)
+.heading-fluid {
+  @include heading(3);  // Mobile: 18px
+
+  @include bp(md) {
+    @include heading(2);  // Tablet: 20px
+  }
+
+  @include bp(lg) {
+    @include heading(1);  // Desktop: 24px
+  }
+}
+
+// Responsive font size (gets bigger on larger screens)
+.font-fluid {
+  @include font-size(base);  // Mobile: 14px
+
+  @include bp(md) {
+    @include font-size(lg);  // Tablet: 16px
+  }
+
+  @include bp(lg) {
+    @include font-size(xl);  // Desktop: 18px
+  }
+}
+
+// Responsive font weight (consistent across screens)
+.font-weight-fluid {
+  @include font-weight(medium);  // Mobile: 400
+
+  @include bp(md) {
+    @include font-weight(semibold);  // Tablet: 500
+  }
+
+  @include bp(lg) {
+    @include font-weight(bold);  // Desktop: 600
+  }
+}
+
+// Responsive border radius (gets bigger on larger screens)
+.border-radius-fluid {
+  border-radius: var(--smallRadius);  // Mobile: 6px
+
+  @include bp(md) {
+    border-radius: var(--mediumRadius);  // Tablet: 12px
+  }
+
+  @include bp(lg) {
+    border-radius: var(--largeRadius);  // Desktop: 18px
+  }
+}
+
+//some more utility class
+.text-caption{
+  font-size: var(--fs-sm);
+  line-height: var(--h6-lh);
+}
+.text-normal{
+  font-size: var(--fs-base);
+  line-height: var(--h5-lh);
+}
+//some font family
+.font-sans{
+  font-family: 'Inter', sans-serif;
+}
+.font-serif{
+  font-family: 'Merriweather', serif;
+}
+.font-mono{
+  font-family: 'Courier New', monospace;
+}
+//some fontstyle
+.font-italic{
+  font-style: italic;
+}
+.font-normal{
+  font-style: normal;
+}
+//some global css utilities for container
+.container-full{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container-fluid{
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+  // max-width: 1200px;
+}
+.container-narrow{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  // max-width: 960px;
+}
+.container-half{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  // max-width: 600px;
+}
+
+// Typography classes
+.heading-1-bold {
+  @include heading(1);
+  @include font-weight(bold);
+}
+
+.heading-2-bold {
+  @include heading(2);
+  @include font-weight(bold);
+}
+
+.heading-3-bold {
+  @include heading(3);
+  @include font-weight(bold);
+}
+
+.heading-4-bold {
+  @include heading(4);
+  @include font-weight(bold);
+}
+
+.heading-5-bold {
+  @include heading(5);
+  @include font-weight(bold);
+}
+
+.body-1-bold {
+  @include font-size(lg);
+  @include font-weight(bold);
+  line-height: 1.6;
+}
+
+.body-2-bold {
+  @include font-size(base);
+  @include font-weight(bold);
+  line-height: 1.6;
+}
+
+.body-3-bold {
+  @include font-size(sm);
+  @include font-weight(bold);
+  line-height: 1.6;
+}
+
+.caption-1-bold {
+  @include font-size(sm);
+  @include font-weight(bold);
+  line-height: 1.4;
+}
+
+.caption-2-bold {
+  @include font-size(xs);
+  @include font-weight(bold);
+  line-height: 1.4;
+}
