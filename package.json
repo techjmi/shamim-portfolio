@@ -15,6 +15,7 @@
     "react-dom": "19.2.0",
     "react-icons": "^5.5.0",
     "react-tsparticles": "^2.12.2",
+    "sass": "^1.96.0",
     "tsparticles": "^3.9.1"
   },
   "devDependencies": {
