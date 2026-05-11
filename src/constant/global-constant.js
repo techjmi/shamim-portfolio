@@ -4,7 +4,8 @@ export const temp_image='https://thumbs.dreamstime.com/b/incredibly-beautiful-su
 
 export const main_url = 'https://shamimportfolio.vercel.app';
 export const local_url = 'http://localhost:3000';
-export const logoUrl = '/logo.png';
+export const logoUrl = '/assets/profile/portfolio_pic.jpeg';
+export const logo_url = logoUrl;
 export const user_image='user.png';
 export const alt_text = 'Shamim Portfolio';
 

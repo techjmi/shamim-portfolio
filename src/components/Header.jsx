@@ -6,6 +6,7 @@ import { Icon } from '@/icons';
 import Drawer from '@/components/ui/Drawer';
 import MobileMenu from './header/MobileMenu';
 import './header.scss';
+import { logo_url, site_author } from '@/constant/global-constant';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,7 +19,11 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
+const header={
+  img: logo_url,
+  title:site_author,
+  link:'/'
+}
   return (
     <>
       <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
@@ -72,6 +77,7 @@ export default function Header() {
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
         position="right"
+        header={header}
       >
         <MobileMenu onClose={() => setIsMobileMenuOpen(false)} />
       </Drawer>

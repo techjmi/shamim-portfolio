@@ -16,7 +16,13 @@
     @include padding(lg);
   }
 }
+.skill-container {
+  @include container-narrow;
 
+  @include bp(lg) {
+    @include container-med;
+  }
+}
 .skill-title {
   margin-bottom: var(--margin-md);
   color: var(--foreground);

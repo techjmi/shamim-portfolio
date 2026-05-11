@@ -12,11 +12,9 @@
     border-bottom-color: var(--border);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(0,0,0);
+    color:#ffffff
 
-    @media (prefers-color-scheme: dark) {
-      background: rgba(17, 24, 39, 0.95);
-    }
   }
 }
 
@@ -44,7 +42,6 @@
   align-items: center;
   gap: var(--margin-sm);
   text-decoration: none;
-  color: var(--foreground);
   transition: opacity 0.3s ease;
 
   &:hover {
@@ -91,7 +88,6 @@
 }
 
 .nav-link {
-  color: var(--foreground);
   text-decoration: none;
   font-size: var(--fs-base);
   font-weight: var(--font-weight-medium);
@@ -143,7 +139,7 @@
     background: var(--c-primary);
     color: #ffffff;
     border: none;
-    border-radius: var(--mediumRadius);
+    border-radius: var(--smallRadius);
     font-size: var(--fs-base);
     font-weight: var(--font-weight-semibold);
     cursor: pointer;

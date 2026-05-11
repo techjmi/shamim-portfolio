@@ -38,7 +38,7 @@ export default function Experience() {
 
   return (
     <section id="experience" className="experience-section py-fluid">
-      <div className="container-narrow">
+      <div className="container-exp">
         <div className="experience-header">
           <h2 className="experience-title">
             {experience_title}

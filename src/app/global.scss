@@ -280,28 +280,44 @@ $breakpoints: (
   font-style: normal;
 }
 //some global css utilities for container
-.container-full{
+@mixin container-full {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
-.container-fluid{
+
+@mixin container-fluid {
   width: 98%;
   margin-left: auto;
   margin-right: auto;
   // max-width: 1200px;
 }
-.container-narrow{
-  width: 80%;
+
+@mixin container-narrow {
+  width: 96%;
   margin-left: auto;
   margin-right: auto;
   // max-width: 960px;
 }
-.container-half{
-  width: 50%;
+
+@mixin container-med {
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
   // max-width: 600px;
+}
+
+.container-full{
+  @include container-full;
+}
+.container-fluid{
+  @include container-fluid;
+}
+.container-narrow{
+  @include container-narrow;
+}
+.container-med{
+  @include container-med;
 }
 
 // Typography classes

@@ -15,7 +15,7 @@ export async function generateMetadata() {
 export default function NotFound() {
   return (
     <section className="min-h-[calc(100vh-125px)] grid place-items-center px-4 py-12">
-      <div className="relative w-full max-w-2xl rounded-2xl border border-white/15 bg-white/60 dark:bg-slate-900/40 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.12)] p-8 md:p-10 text-center">
+      <div className="relative w-full max-w-2xl  p-8 md:p-10 text-center">
         <div className="mx-auto mb-6">
           <Image
             src={not_found_image}

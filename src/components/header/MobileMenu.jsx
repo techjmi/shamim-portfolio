@@ -7,15 +7,6 @@ import './mobile-menu.scss';
 export default function MobileMenu({ onClose }) {
   return (
     <div className="mobile-menu">
-      {/* Logo */}
-      <div className="mobile-menu-header">
-        <Link href="/" className="mobile-menu-logo" onClick={onClose}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={HEADER.logoUrl} alt={HEADER.altText} className="logo-image" />
-          <span className="logo-text">{HEADER.title}</span>
-        </Link>
-      </div>
-
       {/* Navigation Links */}
       <nav className="mobile-menu-nav">
         {HEADER.navLinks.map((link) => (

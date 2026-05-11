@@ -7,7 +7,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
   z-index: 2000;
   animation: fadeIn 0.3s ease;
 }
@@ -17,8 +16,7 @@
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 85%;
-  max-width: 400px;
+  width: 100%;
   background: var(--surface);
   box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -61,10 +59,9 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: var(--muted);
   border: none;
   border-radius: var(--smallRadius);
-  color: var(--foreground);
+  // color: var(--foreground);
   cursor: pointer;
   transition: all 0.3s ease;
 

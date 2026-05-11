@@ -16,7 +16,13 @@
     @include padding(lg);
   }
 }
+.container-exp {
+  @include container-narrow;
 
+  @include bp(lg) {
+    @include container-med;
+  }
+}
 .experience-title {
   margin-bottom: var(--margin-md);
   color: var(--foreground);

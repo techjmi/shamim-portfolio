@@ -35,7 +35,7 @@ export default function Skill() {
 
   return (
     <section id="skills" className="skill-section py-fluid">
-      <div className="container-narrow">
+      <div className="skill-container">
         <div className="skill-header">
           <h2 className="skill-title">{skill_title}</h2>
         </div>

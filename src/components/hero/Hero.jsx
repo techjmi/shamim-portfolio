@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Icon } from '@/icons';
+import { Icon, ICONS } from "@/icons";
 import {
   hero_heading,
   hero_role,
@@ -9,7 +9,8 @@ import {
   hero_image,
   hero_image_alt,
 } from "@/constant/hero-constant";
-import './hero.scss';
+import "./hero.scss";
+import { FOOTER } from "@/constant/footer-constant";
 
 export default function Hero() {
   return (
@@ -26,25 +27,23 @@ export default function Hero() {
             {hero_heading} <span className="wave">👋</span>
           </h1>
 
-          <p className="hero-description">
-            {hero_intro}
-          </p>
+          <p className="hero-description">{hero_intro}</p>
 
           {/* Social Links */}
-          <div className="hero-socials">
-            {hero_socials.map(({ type, href, label }) => (
+          {/* <div className="hero-socials">
+            {FOOTER.socials.map((social) => (
               <a
-                key={type}
-                href={href}
-                aria-label={label}
-                target={type === "email" ? undefined : "_blank"}
-                rel={type === "email" ? undefined : "noreferrer"}
-                className="social-link"
+                key={social.key}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                 className="hero-socials"
               >
-                <Icon name={type} size={24} />
+                {ICONS[social.key]}
               </a>
             ))}
-          </div>
+          </div> */}
         </motion.div>
 
         {/* Right Image with Glassmorphism */}
@@ -56,11 +55,7 @@ export default function Hero() {
         >
           <div className="hero-image-container">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={hero_image}
-              alt={hero_image_alt}
-              className="hero-image"
-            />
+            <img src={hero_image} alt={hero_image_alt} className="hero-image" />
           </div>
         </motion.div>
       </div>
