@@ -27,29 +27,45 @@ const Popup = ({
 }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [progress, setProgress] = useState(100);
+  const [isPaused, setIsPaused] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(autoCloseTime);
 
   useEffect(() => {
-    if (!autoClose) return;
+    if (!autoClose || isPaused) return;
 
     // Update progress bar every 50ms for smooth animation
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         const decrement = (100 / autoCloseTime) * 50;
-        return Math.max(0, prev - decrement);
+        const newProgress = Math.max(0, prev - decrement);
+        return newProgress;
+      });
+
+      setTimeLeft((prev) => {
+        const newTime = Math.max(0, prev - 50);
+        return newTime;
       });
     }, 50);
 
-    // Auto close after specified time
+    // Auto close after time left expires
     const timer = setTimeout(() => {
       setIsVisible(false);
       if (onClose) onClose();
-    }, autoCloseTime);
+    }, timeLeft);
 
     return () => {
       clearTimeout(timer);
       clearInterval(progressInterval);
     };
-  }, [autoClose, autoCloseTime, onClose]);
+  }, [autoClose, autoCloseTime, onClose, isPaused, timeLeft]);
+
+  const handleMouseEnter = () => {
+    setIsPaused(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsPaused(false);
+  };
 
   const handleClose = () => {
     setIsVisible(false);
@@ -70,7 +86,12 @@ const Popup = ({
       id="popup-overlay"
       onClick={handleOverlayClick}
     >
-      <div className={`popup ${className}`} {...rest}>
+      <div
+        className={`popup ${className}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        {...rest}
+      >
         <div className="popup-content">
           {/* Close button */}
           <button className="popup-close" onClick={handleClose} aria-label="Close popup">

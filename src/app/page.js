@@ -19,7 +19,7 @@ export default function Home() {
           description={active_popup.description}
           cta={active_popup.cta}
           ctaLink={active_popup.ctaLink}
-          image={active_popup.image}
+          // image={active_popup.image}
           autoClose={popup_config.autoClose}
           autoCloseTime={popup_config.autoCloseTime}
           onClose={() => setShowPopup(false)}
