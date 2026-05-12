@@ -1,0 +1,229 @@
+@use "../../app/global.scss" as *;
+
+// Overlay
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: var(--padding-md);
+  animation: fadeIn 0.3s ease-in-out;
+
+  @include bp(md) {
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: var(--padding-2xl);
+  }
+}
+
+// Popup container
+.popup {
+  position: relative;
+  background: var(--surface);
+  border-radius: var(--mediumRadius);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
+  animation: slideIn 0.4s ease-out;
+  overflow: hidden;
+
+  @include bp(md) {
+    max-width: 420px;
+  }
+}
+
+// Popup content
+.popup-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+// Close button
+.popup-close {
+  position: absolute;
+  top: var(--padding-sm);
+  right: var(--padding-sm);
+  background: var(--muted);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  color: var(--foreground);
+
+  &:hover {
+    background: var(--c-danger);
+    color: #ffffff;
+    transform: rotate(90deg);
+  }
+
+  &:active {
+    transform: rotate(90deg) scale(0.95);
+  }
+}
+
+// Image
+.popup-image-wrapper {
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--mediumRadius) var(--mediumRadius) 0 0;
+}
+
+.popup-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+// Header
+.popup-header {
+  padding: var(--padding-lg) var(--padding-lg) var(--padding-sm);
+
+  @include bp(md) {
+    padding: var(--padding-xl) var(--padding-xl) var(--padding-md);
+  }
+}
+
+.popup-title {
+  font-size: var(--fs-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  margin: 0;
+  padding-right: var(--padding-3xl); // Space for close button
+
+  @include bp(md) {
+    font-size: var(--fs-2xl);
+  }
+}
+
+// Body
+.popup-body {
+  padding: 0 var(--padding-lg) var(--padding-lg);
+
+  @include bp(md) {
+    padding: 0 var(--padding-xl) var(--padding-xl);
+  }
+}
+
+.popup-description {
+  font-size: var(--fs-base);
+  color: var(--foreground);
+  opacity: 0.8;
+  line-height: 1.6;
+  margin: 0;
+
+  @include bp(md) {
+    font-size: var(--fs-lg);
+  }
+}
+
+// Footer (CTA)
+.popup-footer {
+  padding: 0 var(--padding-lg) var(--padding-lg);
+
+  @include bp(md) {
+    padding: 0 var(--padding-xl) var(--padding-xl);
+  }
+}
+
+// CTA Button
+.popup-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--margin-xs);
+  padding: var(--padding-sm) var(--padding-lg);
+  background: var(--c-primary);
+  color: #ffffff;
+  border-radius: var(--smallRadius);
+  font-size: var(--fs-base);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: color-mix(in srgb, var(--c-primary) 90%, black);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include bp(md) {
+    padding: var(--padding-md) var(--padding-xl);
+    font-size: var(--fs-lg);
+  }
+}
+
+// Progress bar
+.popup-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--muted);
+  overflow: hidden;
+}
+
+.popup-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-primary) 0%, var(--c-info) 100%);
+  transition: width 50ms linear;
+  border-radius: 0 2px 2px 0;
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// Mobile specific
+@media (max-width: 767px) {
+  .popup-overlay {
+    align-items: center;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}

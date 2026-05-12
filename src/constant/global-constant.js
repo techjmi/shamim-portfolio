@@ -35,7 +35,7 @@ export const Navigation_Url = {
   ABOUT: '/about',
   PROJECTS: 'https://intervieworbit.site/projects',
   BLOG: 'https://intervieworbit.site/',
-  CONTACT: '/contact',
+  CONTACT: 'https://intervieworbit.site/contact',
 };
 //some more usefull constant
 export const empty_string = '';

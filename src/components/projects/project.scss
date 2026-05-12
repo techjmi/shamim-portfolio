@@ -1,0 +1,71 @@
+@use "../../app/global.scss" as *;
+
+.project-section {
+  background: var(--background);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.project-container {
+  @include container-narrow;
+
+  @include bp(lg) {
+    @include container-med;
+  }
+}
+
+.project-header {
+  text-align: center;
+  @include padding(md);
+  margin-bottom: var(--margin-2xl);
+
+  @include bp(md) {
+    @include padding(lg);
+  }
+}
+
+.project-title {
+  margin-bottom: var(--margin-md);
+  color: var(--foreground);
+  font-size: var(--h2-fs);
+  font-weight: var(--font-weight-bold);
+
+  @include bp(md) {
+    font-size: var(--h1-fs);
+  }
+}
+
+.project-description {
+  color: var(--foreground);
+  opacity: 0.7;
+  max-width: 672px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: var(--fs-base);
+  line-height: 1.6;
+
+  @include bp(md) {
+    font-size: var(--fs-lg);
+  }
+}
+
+.project-cta-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include padding(md);
+
+  @include bp(md) {
+    @include padding(lg);
+  }
+}
+
+.view-all-button {
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.3);
+  }
+}
