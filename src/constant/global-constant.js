@@ -2,7 +2,7 @@
 //temporary image url
 export const temp_image='https://thumbs.dreamstime.com/b/incredibly-beautiful-sunset-sun-lake-sunrise-landscape-panorama-nature-sky-amazing-colorful-clouds-fantasy-design-115177001.jpg'
 
-export const main_url = 'https://shamimportfolio.vercel.app';
+export const main_url = 'https://shamim-akhter-tawny.vercel.app';
 export const local_url = 'http://localhost:3000';
 export const logoUrl = '/assets/profile/portfolio_pic.jpeg';
 export const logo_url = logoUrl;
@@ -10,9 +10,9 @@ export const user_image='user.png';
 export const alt_text = 'Shamim Portfolio';
 
 export const site_type = 'website';
-export const site_image = logoUrl;
+export const site_image = `${main_url}${logoUrl}`;
 export const site_author = 'Md Shamim Akhter';
-export const site_author_url = 'https://shamimportfolio.vercel.app';
+export const site_author_url = 'https://shamim-akhter-tawny.vercel.app';
 export const site_publisher = 'Shamim Portfolio';
 
 export const site_name = 'Shamim Portfolio | Md Shamim Akhter | Full Stack Developer';

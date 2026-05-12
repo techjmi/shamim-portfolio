@@ -33,7 +33,7 @@ const rootSeo = buildSeo({
   description: default_seo_constant.description,
   keywords: default_seo_constant.keywords,
   canonical: Canonical_Url.HOME,
-  image: logoUrl,
+  image: site_image,
   type: default_seo_constant.type,
   author: site_author,
 });
@@ -45,7 +45,7 @@ export const metadata = {
     template: `%s | ${candidate_name}`,
   },
   applicationName: alt_text,
-  authors: [{ name: site_author }],
+  authors: [{ name: site_author, url: site_linkedin_handle }],
   creator: site_author,
   publisher: site_author,
   category: "portfolio",
@@ -57,17 +57,38 @@ export const metadata = {
     telephone: false,
   },
   icons: {
-    icon: site_image,
-    apple: site_image,
-    shortcut: site_image,
+    icon: logoUrl,
+    apple: logoUrl,
+    shortcut: logoUrl,
+  },
+  // Verification tags for search engines
+  verification: {
+    google: 'JODmxZnfN7I7K9jjUCIFLIV2y6j9urbxXP7PI6rezFU'
+    // yandex: 'yandex-verification-code',
+    // bing: 'msvalidate.01-code',
   },
   openGraph: {
     ...rootSeo.openGraph,
     locale: "en_US",
+    type: "profile",
+    profile: {
+      firstName: candidate_name.split(" ")[1] || candidate_name,
+      lastName: candidate_name.split(" ").slice(2).join(" "),
+      username: "techjmi",
+      gender: "male",
+    },
   },
   twitter: {
     ...rootSeo.twitter,
-    creator: site_twitter_handle,
+    creator: "@saltech23",
+    site: "@saltech23",
+  },
+  // App Links for mobile
+  appLinks: {
+    web: {
+      url: Canonical_Url.HOME,
+      should_fallback: true,
+    },
   },
   other: {
     "profile:first_name": candidate_name.split(" ")[1] || candidate_name,

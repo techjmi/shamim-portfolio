@@ -23,7 +23,7 @@ export const blog_popup = {
   description: "Explore insightful articles on web development, coding best practices, and tech trends. Stay updated with the latest in the tech world.",
   cta: "Read Blog",
   ctaLink: "https://intervieworbit.site/",
-  image: temp_image, // Replace with actual image URL
+  image: temp_image, 
 };
 
 // Projects promotion
@@ -32,7 +32,7 @@ export const projects_popup = {
   description: "Check out my latest web development projects built with modern technologies like React, Next.js, Node.js, and more.",
   cta: "View Projects",
   ctaLink: "https://intervieworbit.site/projects",
-  image: temp_image, // Replace with actual image URL
+  image: temp_image,
 };
 
 // Custom popup - you can add more as needed
