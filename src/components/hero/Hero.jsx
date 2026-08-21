@@ -185,7 +185,7 @@ export default function Hero() {
               </div>
 
               {/* CTA buttons */}
-              <div className="mt-7 flex gap-20">
+              <div className="mt-7 flex md:gap-20 gap-5">
                 <Button
                   variant="filled"
                   color="primary"
