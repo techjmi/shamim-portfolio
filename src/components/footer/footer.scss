@@ -1,10 +1,12 @@
 @use "../../app/global.scss" as *;
 
 .footer-section {
-  background: var(--surface);
+  // background: var(--surface);
+  background-color:#000;
+  color: #f5f5f5 !important;
   border-top: 1px solid var(--border);
   @include padding(lg);
-  margin-top: var(--margin-4xl);
+  // margin-top: var(--margin-4xl);
 
   @include bp(md) {
     @include padding(xl);
@@ -13,6 +15,9 @@
   @include bp(lg) {
     @include padding(2xl);
   }
+}
+.footer-section *{
+  color: #f5f5f5;
 }
 
 .footer-container {
@@ -53,7 +58,7 @@
 }
 
 .footer-heading {
-  color: var(--foreground);
+ 
   margin-bottom: var(--margin-xs);
 }
 
@@ -64,13 +69,13 @@
 }
 
 .footer-description {
-  color: var(--foreground);
+ 
   opacity: 0.7;
   line-height: 1.6;
 }
 
 .footer-column-title {
-  color: var(--foreground);
+ 
   margin-bottom: var(--margin-sm);
 }
 
@@ -82,7 +87,7 @@
 }
 
 .footer-link {
-  color: var(--foreground);
+ 
   opacity: 0.7;
   text-decoration: none;
   transition: opacity 0.3s ease, color 0.3s ease;
@@ -104,7 +109,7 @@
   display: flex;
   align-items: center;
   gap: var(--margin-sm);
-  color: var(--foreground);
+ 
   opacity: 0.7;
   text-decoration: none;
   transition: opacity 0.3s ease, color 0.3s ease;
@@ -150,7 +155,7 @@
 
 .footer-copyright,
 .footer-built {
-  color: var(--foreground);
+ 
   opacity: 0.6;
   margin: 0;
   display: flex;
@@ -181,8 +186,8 @@
   width: 40px;
   height: 40px;
   border-radius: var(--mediumRadius);
-  background: var(--muted);
-  color: var(--foreground);
+  // background: var(--muted);
+ 
   transition: all 0.3s ease;
   text-decoration: none;
 

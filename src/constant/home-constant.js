@@ -1,5 +1,5 @@
 //this is the home constant file for this porftfolio project
 export const home_title = 'Home';
-export const home_description = 'I am a Full Stack Developer with 2 years of experience in building scalable and maintainable web applications. I have worked with a variety of technologies including React, Next.js, Node.js, MongoDB, and more. I am also a big fan of open source and have contributed to a number of projects on GitHub.';
+export const home_description = 'I\'m a **Full Stack Developer** with **2+ years of experience** crafting fast, scalable web applications. I work across the stack — from **React & Next.js** on the frontend to **Node.js & MongoDB** on the backend — and I care deeply about clean code, great UX, and shipping things that actually work.';
 export const home_image = '/home.png';
 //note home will use default seo constant

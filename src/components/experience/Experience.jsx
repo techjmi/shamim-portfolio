@@ -40,7 +40,7 @@ export default function Experience() {
     <section id="experience" className="experience-section py-fluid">
       <div className="container-exp">
         <div className="experience-header">
-          <h2 className="experience-title">
+          <h2 className="experience-title text-3xl md:text-5xl font-semibold">
             {experience_title}
           </h2>
           <p className="experience-description">
@@ -79,15 +79,7 @@ export default function Experience() {
                     <Badge variant="primary" className="job-type-badge">{experience.type}</Badge>
                   </div>
                   <h4 className="role-title">{experience.role}</h4>
-                  <p className="description">
-                    {parseHighlightedText(experience.description).map((part, idx) => (
-                      part.highlighted ? (
-                        <span key={idx} className="highlight-text">{part.text}</span>
-                      ) : (
-                        <span key={idx}>{part.text}</span>
-                      )
-                    ))}
-                  </p>
+                  <p className="description">{parseHighlightedText(experience.description)}</p>
                 </div>
               </div>
             </div>

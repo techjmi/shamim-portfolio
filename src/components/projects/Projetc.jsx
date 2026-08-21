@@ -1,6 +1,3 @@
-/*
-project section
-**/
 "use client";
 import React from 'react';
 import { project_title, project_description } from '@/constant/project.constant';
@@ -11,9 +8,10 @@ import './project.scss';
 
 const Projetc = () => {
   return (
-    <section id='project' className="project-section py-fluid">
+    <section id='projects' className="project-section py-fluid">
       <div className="project-container">
         <div className="project-header">
+          <span className="project-eyebrow">My Work</span>
           <h2 className="project-title">{project_title}</h2>
           <p className="project-description">{project_description}</p>
         </div>
@@ -33,7 +31,7 @@ const Projetc = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Projetc
+export default Projetc;

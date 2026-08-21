@@ -19,7 +19,11 @@
 }
 
 .hero-container {
-  max-width: 1180px;
+  // max-width: 1180px;
+   @include container-narrow;
+  @include bp(lg) {
+    @include container-med;
+  }
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -79,6 +83,7 @@
   @include bp(lg) {
     font-size: var(--fs-xl);
   }
+
 }
 
 .hero-socials {
@@ -91,17 +96,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.75);
 
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
     transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   }
 }
 

@@ -19,7 +19,7 @@ export const HEADER = {
   ],
   cta: {
     label: 'Resume',
-    href: '/resume.pdf',
+    href: '/assets/resume/Akhter_Shamim_resume.pdf',
   },
 };
 

@@ -63,9 +63,9 @@ export default function Footer() {
         <div className="footer-bottom">
           <div className="footer-bottom-left">
             <p className="footer-copyright">{FOOTER.copyright}</p>
-            <p className="footer-built">
+            {/* <p className="footer-built">
               {FOOTER.builtWith} <Icon name="heart" size={14} className="footer-heart" />
-            </p>
+            </p> */}
           </div>
 
           {/* Social Links */}

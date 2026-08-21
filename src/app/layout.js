@@ -2,7 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/footer/Footer";
-import { buildSeo, default_json_ld } from "@/utils/seo";
+import { buildSeo, default_json_ld, website_json_ld } from "@/utils/seo";
 import { default_seo_constant } from "@/constant/seo-constant";
 import {
   alt_text,
@@ -107,8 +107,12 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(default_json_ld) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(website_json_ld) }}
+        />
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="">{children}</main>
         <Footer />
         {/* {children} */}
       </body>

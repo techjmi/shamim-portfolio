@@ -114,13 +114,12 @@ export const default_json_ld = {
 export const buildJsonLd = ({ title, description, image, type = site_type, author = site_author,
   article = {},
 }) => {
-  // Ensure image URL is absolute
   const imageUrl = image || site_image;
   const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : `${main_url}${imageUrl}`;
 
-  const jsonLd = {
+  return {
     ...default_json_ld,
-    name: title,
+    // keep name as the real author name, not the page title
     description,
     image: absoluteImageUrl,
     author: {
@@ -137,6 +136,19 @@ export const buildJsonLd = ({ title, description, image, type = site_type, autho
       }
     }
   };
-  return jsonLd;
+};
+
+// WebSite schema — enables Google Sitelinks search box
+export const website_json_ld = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": site_author,
+  "url": main_url,
+  "description": "Personal portfolio of Md Shamim Akhter — Full Stack Developer",
+  "author": {
+    "@type": "Person",
+    "name": site_author,
+    "url": main_url,
+  },
 };
 

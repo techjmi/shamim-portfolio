@@ -1,29 +1,32 @@
 //this is the project constant file for this porftfolio project
 import { Canonical_Url, site_type, site_author, site_publisher, main_url, logoUrl, site_author_url} from "./global-constant";
-export const project_title = 'Projects';
-export const project_description = 'I am a Full Stack Developer with 2 years of experience in building scalable and maintainable web applications. I have worked with a variety of technologies including React, Next.js, Node.js, MongoDB, and more. I am also a big fan of open source and have contributed to a number of projects on GitHub.';
-//list of project constant
+export const project_title = 'Featured Projects';
+export const project_description = 'A selection of things I\'ve shipped — production platforms, full-stack apps, and side experiments. Real code, real users.';
+
 export const project_list = [
   {
-    title: 'Project 1',
-    description: 'This is the description of project 1',
+    title: 'InterviewOrbit',
+    description: 'A full-stack career platform with curated interview prep, a job tracker, and placement support. Built to help developers land their first role faster.',
     image: '/project1.png',
+    tech: ['Next.js', 'Node.js', 'MongoDB', 'Tailwind CSS'],
     github_link: 'https://github.com/techjmi',
-    live_link: 'https://github.com/techjmi',
+    live_link: 'https://intervieworbit.site',
   },
   {
-    title: 'Project 2',
-    description: 'This is the description of project 2',
+    title: 'Dev Portfolio',
+    description: 'This portfolio — animated shader backgrounds, smooth motion transitions, dark-first design, and fully responsive across all devices.',
     image: '/project2.png',
+    tech: ['Next.js', 'React', 'SCSS', 'Framer Motion'],
     github_link: 'https://github.com/techjmi',
-    live_link: 'https://github.com/techjmi',
+    live_link: 'https://shamim-akhter-tawny.vercel.app',
   },
   {
-    title: 'Project 3',
-    description: 'This is the description of project 3',
+    title: 'E-Commerce REST API',
+    description: 'A scalable backend API with JWT authentication, product & inventory management, cart, order processing, and Stripe payment integration.',
     image: '/project3.png',
+    tech: ['Node.js', 'Express', 'MongoDB', 'JWT'],
     github_link: 'https://github.com/techjmi',
-    live_link: 'https://github.com/techjmi',
+    live_link: null,
   },
 ];
 //project seo constant
