@@ -136,7 +136,7 @@ export default function Hero() {
               </div>
 
               {/* Name */}
-              <h1 className="font-extrabold leading-tight tracking-tight text-2xl lg:text-5xl md:text-3xl">
+              <h1 className="font-bold leading-tight tracking-tight text-2xl lg:text-5xl md:text-3xl">
                 {hero_heading} 
                 {/* <span className="wave">👋</span> */}
               </h1>
