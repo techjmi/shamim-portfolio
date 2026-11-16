@@ -13,7 +13,7 @@ export const interview_orbit_popup = {
   title: "Ace Your Next Interview!",
   description: "Prepare for your dream job with InterviewOrbit - your complete interview preparation platform with practice questions, coding challenges, and expert tips.",
   cta: "Visit InterviewOrbit",
-  ctaLink: "https://intervieworbit.site/",
+  ctaLink: "https://intervieworbit.vercel.app/",
   image: temp_image, 
 };
 
@@ -22,7 +22,7 @@ export const blog_popup = {
   title: "Check Out My Latest Blog!",
   description: "Explore insightful articles on web development, coding best practices, and tech trends. Stay updated with the latest in the tech world.",
   cta: "Read Blog",
-  ctaLink: "https://intervieworbit.site/",
+  ctaLink: "https://intervieworbit.vercel.app/",
   image: temp_image, 
 };
 
@@ -31,7 +31,7 @@ export const projects_popup = {
   title: "Explore My Projects",
   description: "Check out my latest web development projects built with modern technologies like React, Next.js, Node.js, and more.",
   cta: "View Projects",
-  ctaLink: "https://intervieworbit.site/projects",
+  ctaLink: "https://intervieworbit.vercel.app/projects",
   image: temp_image,
 };
 
