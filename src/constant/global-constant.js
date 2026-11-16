@@ -33,9 +33,9 @@ export const site_facebook_handle = 'https://www.facebook.com/profile.php?id=100
 export const Navigation_Url = {
   HOME: '/',
   ABOUT: '/about',
-  PROJECTS: 'https://intervieworbit.site/projects',
-  BLOG: 'https://intervieworbit.site/',
-  CONTACT: 'https://intervieworbit.site/contact',
+  PROJECTS: 'https://intervieworbit.vercel.app/projects',
+  BLOG: 'https://intervieworbit.vercerl.app/',
+  CONTACT: 'https://intervieworbit.vercerl.app/contact',
 };
 //some more usefull constant
 export const empty_string = '';
