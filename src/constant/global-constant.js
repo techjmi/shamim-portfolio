@@ -34,8 +34,8 @@ export const Navigation_Url = {
   HOME: '/',
   ABOUT: '/about',
   PROJECTS: 'https://intervieworbit.vercel.app/projects',
-  BLOG: 'https://intervieworbit.vercerl.app/',
-  CONTACT: 'https://intervieworbit.vercerl.app/contact',
+  BLOG: 'https://intervieworbit.vercel.app/',
+  CONTACT: 'https://intervieworbit.vercel.app/contact',
 };
 //some more usefull constant
 export const empty_string = '';
