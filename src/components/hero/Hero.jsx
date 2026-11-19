@@ -190,7 +190,7 @@ export default function Hero() {
                   variant="filled"
                   color="primary"
                   size="lg"
-                  onClick={() => router.push('https://intervieworbit.site/projects')}
+                  onClick={() => router.push('https://intervieworbit.vercel.app/projects')}
                   className="cursor-pointer"
                 >
                   View Projects
